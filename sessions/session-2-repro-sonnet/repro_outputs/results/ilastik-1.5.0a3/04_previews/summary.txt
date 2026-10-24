@@ -1,0 +1,9 @@
+ilastik version: 1.5.0a3
+frames: 53  image size (x, y): 1344 x 1024
+objects (all frames): 7485
+tracks (trackId > 0; a track ends at a division): 357
+lineages (lineageId > 0 = pixel value in Tracking-Result image): 117
+untracked objects (trackId -1; pixel value 1 in Tracking-Result image): 328
+tracks that start from a division (have a parent track): 240
+objects in merger regions (mergerLabelId > 0): 166
+objects per frame: min 80, median 133, max 232
