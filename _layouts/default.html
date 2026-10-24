@@ -92,5 +92,22 @@ article details > :last-child { margin-bottom: 0; }
     Source: <a href="{{ site.github.repository_url }}">{{ site.github.repository_nwo }}</a>.
   </div>
 </footer>
+<script>
+// GitHub Pages serves no folder listings and shows code files as plain downloads, so relative links to
+// folders and source files go to the repository on GitHub instead.
+(function () {
+  var base = new URL("{{ site.baseurl }}/", location.origin).href;
+  var repo = "{{ site.github.repository_url }}";
+  document.querySelectorAll("article a[href]").forEach(function (a) {
+    var href = a.getAttribute("href");
+    if (/^([a-z]+:|#|\/\/)/i.test(href)) return;
+    var url = new URL(href, location.href);
+    if (url.href.indexOf(base) !== 0) return;
+    var path = decodeURIComponent(url.pathname.slice(new URL(base).pathname.length));
+    if (path.slice(-1) === "/") a.href = repo + "/tree/main/" + path.replace(/\/$/, "");
+    else if (/\.(py|sh|ijm|json|log|txt|yml|yaml|tsv|csv|h5|ilp|zip)$/i.test(path)) a.href = repo + "/blob/main/" + path;
+  });
+})();
+</script>
 </body>
 </html>
