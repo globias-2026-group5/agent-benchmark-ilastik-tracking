@@ -1,0 +1,219 @@
+{
+ "annotators": [
+  "A0_ilastik_human",
+  "A1_tight",
+  "A2_generous",
+  "A3_bright_only",
+  "A4_sparse",
+  "A5_late_frames"
+ ],
+ "rules": {
+  "union (>=1)": {
+   "mean_count": 124.81132075471699,
+   "mean_area": 885.6589569160998,
+   "median_area": 837.0,
+   "fg_pixels": 5858634,
+   "flicker_objects": 42,
+   "flicker_rate": 0.007402185407120197,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.7685169634300889,
+    "A1_tight": 0.6534048987956427,
+    "A2_generous": 0.9907570725062055,
+    "A3_bright_only": 0.6208055267273583,
+    "A4_sparse": 0.7598619781341901,
+    "A5_late_frames": 0.766401447815932
+   }
+  },
+  "majority (>=4/6)": {
+   "mean_count": 101.56603773584905,
+   "mean_area": 615.1382128924391,
+   "median_area": 629.0,
+   "fg_pixels": 3311289,
+   "flicker_objects": 95,
+   "flicker_rate": 0.02023429179978701,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.7795680953214082,
+    "A1_tight": 0.9238387217282122,
+    "A2_generous": 0.7306239381511712,
+    "A3_bright_only": 0.8694957356514067,
+    "A4_sparse": 0.959625202850654,
+    "A5_late_frames": 0.9527343873631512
+   }
+  },
+  "unanimity (6/6)": {
+   "mean_count": 79.22641509433963,
+   "mean_area": 473.5760895451298,
+   "median_area": 519.0,
+   "fg_pixels": 1988546,
+   "flicker_objects": 61,
+   "flicker_rate": 0.016163222045574986,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.7045742588500239,
+    "A1_tight": 0.8231902032489699,
+    "A2_generous": 0.5138448061789151,
+    "A3_bright_only": 0.8597918776732758,
+    "A4_sparse": 0.7129615454253738,
+    "A5_late_frames": 0.7066168688304597
+   }
+  },
+  "mean probability > 0.5": {
+   "mean_count": 113.77358490566037,
+   "mean_area": 585.0800995024875,
+   "median_area": 595.0,
+   "fg_pixels": 3528033,
+   "flicker_objects": 119,
+   "flicker_rate": 0.02258064516129032,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.8068867053508405,
+    "A1_tight": 0.8923547000276103,
+    "A2_generous": 0.7601862930804365,
+    "A3_bright_only": 0.8420413382876474,
+    "A4_sparse": 0.9372014245498969,
+    "A5_late_frames": 0.9800676465615044
+   }
+  },
+  "weighted vote (A0 x2)": {
+   "mean_count": 111.0377358490566,
+   "mean_area": 597.3143585386576,
+   "median_area": 605.0,
+   "fg_pixels": 3515195,
+   "flicker_objects": 59,
+   "flicker_rate": 0.011431893043983725,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.8142692777887707,
+    "A1_tight": 0.8942103330232236,
+    "A2_generous": 0.7585560446161067,
+    "A3_bright_only": 0.8406821910656416,
+    "A4_sparse": 0.9333572979508985,
+    "A5_late_frames": 0.9813123846437026
+   }
+  },
+  "STAPLE": {
+   "mean_count": 108.15094339622641,
+   "mean_area": 661.945394277739,
+   "median_area": 657.0,
+   "fg_pixels": 3794271,
+   "flicker_objects": 55,
+   "flicker_rate": 0.011002200440088018,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.7837684934726314,
+    "A1_tight": 0.8566377697531173,
+    "A2_generous": 0.7946785925864234,
+    "A3_bright_only": 0.8200737945414429,
+    "A4_sparse": 0.9720892281210917,
+    "A5_late_frames": 0.979222720438112
+   }
+  }
+ },
+ "staple": {
+  "sensitivity": {
+   "A0_ilastik_human": 0.7741279799665274,
+   "A1_tight": 0.7498381004496132,
+   "A2_generous": 0.9996225125951953,
+   "A3_bright_only": 0.6955882132066877,
+   "A4_sparse": 0.941815736105481,
+   "A5_late_frames": 0.9600737893799385
+  },
+  "specificity": {
+   "A0_ilastik_human": 0.989569534780752,
+   "A1_tight": 1.0000000000000002,
+   "A2_generous": 0.9716331788397229,
+   "A3_bright_only": 1.0000000000000002,
+   "A4_sparse": 0.999723319896452,
+   "A5_late_frames": 1.0000000000000002
+  }
+ },
+ "pairwise_dice": {
+  "A0_ilastik_human|A1_tight": 0.7818627096470817,
+  "A0_ilastik_human|A2_generous": 0.7549381065138573,
+  "A0_ilastik_human|A3_bright_only": 0.63477544986062,
+  "A0_ilastik_human|A4_sparse": 0.7508331663412391,
+  "A0_ilastik_human|A5_late_frames": 0.7991168785813587,
+  "A1_tight|A2_generous": 0.6614025864739204,
+  "A1_tight|A3_bright_only": 0.8335126259405107,
+  "A1_tight|A4_sparse": 0.8838481621591874,
+  "A1_tight|A5_late_frames": 0.8770438811331475,
+  "A2_generous|A3_bright_only": 0.6284866654912371,
+  "A2_generous|A4_sparse": 0.7681193801808962,
+  "A2_generous|A5_late_frames": 0.7748658708452173,
+  "A3_bright_only|A4_sparse": 0.8465732846429069,
+  "A3_bright_only|A5_late_frames": 0.8241214228019837,
+  "A4_sparse|A5_late_frames": 0.9505062220460929
+ },
+ "leave_one_out_dice": {
+  "A0_ilastik_human": 0.760613501159354,
+  "A1_tight": 0.8704514503165809,
+  "A2_generous": 0.7305825020437207,
+  "A3_bright_only": 0.8240704965249325,
+  "A4_sparse": 0.9326781400141232,
+  "A5_late_frames": 0.9454254331078035
+ },
+ "uncertain_fraction_of_union": 0.6605785580734349,
+ "per_annotator": {
+  "A0_ilastik_human": {
+   "mean_count": 138.39622641509433,
+   "mean_area": 498.4496250852079,
+   "median_area": 535.0,
+   "fg_pixels": 3656128,
+   "flicker_objects": 50,
+   "flicker_rate": 0.0078125
+  },
+  "A1_tight": {
+   "mean_count": 97.28301886792453,
+   "mean_area": 551.3518231186966,
+   "median_area": 564.0,
+   "fg_pixels": 2842770,
+   "flicker_objects": 33,
+   "flicker_rate": 0.007294429708222812
+  },
+  "A2_generous": {
+   "mean_count": 121.79245283018868,
+   "mean_area": 890.9874515879163,
+   "median_area": 848.0,
+   "fg_pixels": 5751324,
+   "flicker_objects": 41,
+   "flicker_rate": 0.007403394727338389
+  },
+  "A3_bright_only": {
+   "mean_count": 76.39622641509433,
+   "mean_area": 651.2963694739442,
+   "median_area": 683.0,
+   "fg_pixels": 2637099,
+   "flicker_objects": 53,
+   "flicker_rate": 0.01459251101321586
+  },
+  "A4_sparse": {
+   "mean_count": 98.9245283018868,
+   "mean_area": 684.6698455082968,
+   "median_area": 687.0,
+   "fg_pixels": 3589724,
+   "flicker_objects": 89,
+   "flicker_rate": 0.01957765068191817
+  },
+  "A5_late_frames": {
+   "mean_count": 109.43396226415095,
+   "mean_area": 627.5536206896552,
+   "median_area": 637.0,
+   "fg_pixels": 3639811,
+   "flicker_objects": 55,
+   "flicker_rate": 0.01085454904282613
+  }
+ },
+ "object_vote_histogram": {
+  "0": 0,
+  "1": 460,
+  "2": 1470,
+  "3": 304,
+  "4": 689,
+  "5": 1428,
+  "6": 2264
+ },
+ "object_median_area_by_votes": {
+  "1": 67.5,
+  "2": 574.0,
+  "3": 761.0,
+  "4": 717.0,
+  "5": 913.5,
+  "6": 1085.0
+ }
+}

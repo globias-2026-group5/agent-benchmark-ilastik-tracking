@@ -46,11 +46,15 @@ gray = lambda t: np.clip((raw[t, ..., 0].T - lo) / (hi - lo), 0, 1)  # (y, x)
 def strokes(name):
     """{frame: label image (y, x)} of the brush labels stored in the annotator's project."""
     out = {}
+    ny, nx = raw.shape[2], raw.shape[1]
     with h5py.File(S4 / "projects" / f"{name}.ilp", "r") as f:
         for block in f["PixelClassification/LabelSets/labels000"].values():
-            t = int(block.attrs["blockSlice"].strip("[]").split(",")[0].split(":")[0])
-            lab = block[0, ..., 0]
-            out[t] = np.maximum(out.get(t, np.zeros_like(lab)), lab)
+            # ilastik stores label blocks as t, y, x, c with their position in 'blockSlice'
+            # (it re-splits them into smaller blocks when it saves a retrained project).
+            (t0, _), (y0, y1), (x0, x1) = [tuple(map(int, r.split(":")))
+                                           for r in block.attrs["blockSlice"].strip("[]").split(",")[:3]]
+            lab = out.setdefault(t0, np.zeros((ny, nx), np.uint8))
+            lab[y0:y1, x0:x1] = np.maximum(lab[y0:y1, x0:x1], block[0, ..., 0])
     return out
 
 
@@ -98,12 +102,14 @@ def main():
         wins.append((slice(y0, y0 + CROP), slice(x0, x0 + CROP)))
 
     cols = len(ANNOTATORS) + len(RULES)
-    fig, axes = plt.subplots(3, cols, figsize=(1.75 * cols, 6.3))
+    fig, axes = plt.subplots(3, cols, figsize=(1.75 * cols, 7.0), gridspec_kw=dict(hspace=0.45))
     for c, (name, label) in enumerate(ANNOTATORS):
         st = strokes(name)
         t = max(st, key=lambda k: int((st[k] > 0).sum()))
         lab = st[t]
-        y0, x0 = best_crop(lab > 0, CROP)
+        # Centre on both kinds of stroke: each class weighted by its share of the frame's strokes.
+        score = (lab == 1) / max((lab == 1).sum(), 1) + (lab == 2) / max((lab == 2).sum(), 1)
+        y0, x0 = best_crop(score, CROP)
         win = (slice(y0, y0 + CROP), slice(x0, x0 + CROP))
         rgb = np.repeat(gray(t)[win][..., None], 3, axis=2)
         rgb[lab[win] == 1] = matplotlib.colors.to_rgb(BLUE)
@@ -116,10 +122,10 @@ def main():
     for r, (t, win) in enumerate(zip(frames, wins), start=1):
         for c, (name, _) in enumerate(ANNOTATORS):
             n_obj = ndimage.label(M[name][t][win])[1]
-            show(axes[r, c], mask_tile(t, win, M[name][t]), sub=f"{n_obj} objects")
+            show(axes[r, c], mask_tile(t, win, M[name][t]), sub=f"{n_obj} object{'' if n_obj == 1 else 's'}")
         for c, (key, _) in enumerate(RULES, start=len(ANNOTATORS)):
             n_obj = ndimage.label(R[key][t][win])[1]
-            show(axes[r, c], mask_tile(t, win, R[key][t]), sub=f"{n_obj} objects")
+            show(axes[r, c], mask_tile(t, win, R[key][t]), sub=f"{n_obj} object{'' if n_obj == 1 else 's'}")
         axes[r, 0].set_ylabel(f"frame {t}\nx {win[1].start}–{win[1].stop}\ny {win[0].start}–{win[0].stop}",
                               fontsize=8, color=INK2)
     fig.suptitle("Same frames, every annotator (Session 4, rerun): row 1 what each one painted "
@@ -128,7 +134,7 @@ def main():
     fig.text(0.01, 0.005, "Crops in rows 2–3 are where the six annotators disagree most. A1–A5 are simulated "
              "by Session 4's program; only A0 was drawn by a person.", fontsize=8, color=INK2)
     fig.patch.set_facecolor(SURFACE)
-    fig.tight_layout(rect=(0, 0.02, 1, 0.95))
+    fig.subplots_adjust(left=0.05, right=0.995, top=0.88, bottom=0.07, wspace=0.08, hspace=0.45)
     fig.savefig(OUT, dpi=110, facecolor=SURFACE)
     print(OUT)
 

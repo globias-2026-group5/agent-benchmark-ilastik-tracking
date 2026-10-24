@@ -1,0 +1,194 @@
+{
+ "annotators": [
+  "A0_ilastik_human",
+  "A1_tight",
+  "A3_bright_only",
+  "A3b_bright_only",
+  "A3c_bright_only"
+ ],
+ "rules": {
+  "union (>=1)": {
+   "mean_count": 134.67924528301887,
+   "mean_area": 609.5119080975063,
+   "median_area": 614.0,
+   "fg_pixels": 4350696,
+   "flicker_objects": 50,
+   "flicker_rate": 0.008045052292839904,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.9132529951950986,
+    "A1_tight": 0.7903755991895979,
+    "A3_bright_only": 0.7547728575323117,
+    "A3b_bright_only": 0.7870707370335605,
+    "A3c_bright_only": 0.7195653693426167
+   }
+  },
+  "majority (>=3/5)": {
+   "mean_count": 83.16981132075472,
+   "mean_area": 599.5256352087114,
+   "median_area": 634.5,
+   "fg_pixels": 2642709,
+   "flicker_objects": 57,
+   "flicker_rate": 0.014555669050051073,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.6858116823788264,
+    "A1_tight": 0.8918273135308694,
+    "A3_bright_only": 0.9394924966968495,
+    "A3b_bright_only": 0.9669299302088465,
+    "A3c_bright_only": 0.9611315046500676
+   }
+  },
+  "unanimity (5/5)": {
+   "mean_count": 79.58490566037736,
+   "mean_area": 458.0685158843054,
+   "median_area": 505.0,
+   "fg_pixels": 1932133,
+   "flicker_objects": 79,
+   "flicker_rate": 0.020778537611783273,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.6914970506925142,
+    "A1_tight": 0.8092868064544976,
+    "A3_bright_only": 0.8457145533428813,
+    "A3b_bright_only": 0.8126224553934839,
+    "A3c_bright_only": 0.88283865178068
+   }
+  },
+  "mean probability > 0.5": {
+   "mean_count": 103.86792452830188,
+   "mean_area": 475.2305177111717,
+   "median_area": 551.0,
+   "fg_pixels": 2616144,
+   "flicker_objects": 629,
+   "flicker_rate": 0.12807982081042557,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.6902519533591656,
+    "A1_tight": 0.8972451297089494,
+    "A3_bright_only": 0.9318274444947625,
+    "A3b_bright_only": 0.9572210760401035,
+    "A3c_bright_only": 0.9540473687257501
+   }
+  },
+  "weighted vote (A0 x2)": {
+   "mean_count": 83.67924528301887,
+   "mean_area": 551.4078917700112,
+   "median_area": 591.0,
+   "fg_pixels": 2445494,
+   "flicker_objects": 58,
+   "flicker_rate": 0.014713343480466767,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.7079783047851866,
+    "A1_tight": 0.9215311489744082,
+    "A3_bright_only": 0.8983501138100178,
+    "A3b_bright_only": 0.9282603711301385,
+    "A3c_bright_only": 0.923073997439501
+   }
+  },
+  "STAPLE": {
+   "mean_count": 82.88679245283019,
+   "mean_area": 631.7730480309583,
+   "median_area": 666.0,
+   "fg_pixels": 2775379,
+   "flicker_objects": 48,
+   "flicker_rate": 0.012317167051578136,
+   "dice_vs_annotators": {
+    "A0_ilastik_human": 0.674756631688343,
+    "A1_tight": 0.8719761615435974,
+    "A3_bright_only": 0.9605585463811585,
+    "A3b_bright_only": 0.9914108101938556,
+    "A3c_bright_only": 0.9367052478211181
+   }
+  }
+ },
+ "staple": {
+  "sensitivity": {
+   "A0_ilastik_human": 0.7815652591764283,
+   "A1_tight": 0.8836626499236759,
+   "A3_bright_only": 0.9377429376745858,
+   "A3b_bright_only": 0.9999424324771091,
+   "A3c_bright_only": 0.8821388216445312
+  },
+  "specificity": {
+   "A0_ilastik_human": 0.9787669581466938,
+   "A1_tight": 0.9943909385244416,
+   "A3_bright_only": 0.999458084493391,
+   "A3b_bright_only": 0.99926316833477,
+   "A3c_bright_only": 1.0000000000000002
+  }
+ },
+ "pairwise_dice": {
+  "A0_ilastik_human|A1_tight": 0.7818627096470817,
+  "A0_ilastik_human|A3_bright_only": 0.63477544986062,
+  "A0_ilastik_human|A3b_bright_only": 0.6697339742669653,
+  "A0_ilastik_human|A3c_bright_only": 0.6462910625598356,
+  "A1_tight|A3_bright_only": 0.8335126259405107,
+  "A1_tight|A3b_bright_only": 0.8645689859052513,
+  "A1_tight|A3c_bright_only": 0.8517580987981798,
+  "A3_bright_only|A3b_bright_only": 0.952105839474209,
+  "A3_bright_only|A3c_bright_only": 0.9487270708047802,
+  "A3b_bright_only|A3c_bright_only": 0.9281986071335763
+ },
+ "leave_one_out_dice": {
+  "A0_ilastik_human": 0.6576586525340573,
+  "A1_tight": 0.8632566186601561,
+  "A3_bright_only": 0.8975318255787968,
+  "A3b_bright_only": 0.9007282098683476,
+  "A3c_bright_only": 0.9213009979166531
+ },
+ "uncertain_fraction_of_union": 0.5559025498448984,
+ "per_annotator": {
+  "A0_ilastik_human": {
+   "mean_count": 138.39622641509433,
+   "mean_area": 498.4496250852079,
+   "median_area": 535.0,
+   "fg_pixels": 3656128,
+   "flicker_objects": 50,
+   "flicker_rate": 0.0078125
+  },
+  "A1_tight": {
+   "mean_count": 97.28301886792453,
+   "mean_area": 551.3518231186966,
+   "median_area": 564.0,
+   "fg_pixels": 2842770,
+   "flicker_objects": 33,
+   "flicker_rate": 0.007294429708222812
+  },
+  "A3_bright_only": {
+   "mean_count": 76.39622641509433,
+   "mean_area": 651.2963694739442,
+   "median_area": 683.0,
+   "fg_pixels": 2637099,
+   "flicker_objects": 53,
+   "flicker_rate": 0.01459251101321586
+  },
+  "A3b_bright_only": {
+   "mean_count": 82.77358490566037,
+   "mean_area": 643.5308867107362,
+   "median_area": 682.0,
+   "fg_pixels": 2823170,
+   "flicker_objects": 47,
+   "flicker_rate": 0.012076053442959919
+  },
+  "A3c_bright_only": {
+   "mean_count": 78.26415094339623,
+   "mean_area": 589.4308100289296,
+   "median_area": 624.0,
+   "fg_pixels": 2444959,
+   "flicker_objects": 44,
+   "flicker_rate": 0.011821601289629231
+  }
+ },
+ "object_vote_histogram": {
+  "0": 0,
+  "1": 2261,
+  "2": 899,
+  "3": 347,
+  "4": 200,
+  "5": 3431
+ },
+ "object_median_area_by_votes": {
+  "1": 486.0,
+  "2": 567.0,
+  "3": 532.0,
+  "4": 476.5,
+  "5": 745.0
+ }
+}

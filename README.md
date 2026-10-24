@@ -213,6 +213,43 @@ Each label set was then loaded into its **own copy of the 2014 ilastik project**
 forest removed) and retrained headless in ilastik 1.4.2; a pixel counts as nucleus where the probability
 is above 0.5, after filling holes and removing objects of 20 px or less.
 
+### Same frames, every annotator
+
+![Same crops of frames 26 and 45: what each annotator painted, and the mask its classifier produced](img/annotators_same_frame.png)
+
+Drawn from a rerun of Session 4's own scripts (unchanged, in
+[`sessions/session-4-blind-opus/scripts/`](sessions/session-4-blind-opus/scripts/)); Session 4 also drew
+the same panel from its original files, and both chose the **same two crops independently** (the
+120 × 120 px windows where the six annotators disagree most). Reading across a row:
+
+- **A0, the real annotator, finds the dim nuclei** (11 and 7 objects). A1 and A4 miss most of them
+  (6 and 4, 7 and 4), although their brush strokes are inside nuclei: a classifier trained on a few
+  bright examples does not generalise to dim ones. A3 calls them background by design (5 and 1).
+- **So majority vote drops dim nuclei even in the main pool**, not only in the deliberately biased one:
+  7 and 4 objects here, against A0's 11 and 7. Session 4 pointed this out when it drew its own panel; its
+  report had not said it.
+- **STAPLE is not always "between" majority and union**: in frame 45 it keeps a fragmented object from
+  A5 that majority vote drops.
+- Both crops touch the left edge of the image, where nuclei are dimmer, so they may overstate how much
+  the annotators disagree elsewhere.
+
+**Does Session 4's result reproduce?** Rerunning its scripts unchanged gave almost the same numbers:
+
+| nuclei per frame | Session 4 (report) | rerun |
+|---|---|---|
+| A0 / A1 / A2 / A3 / A5 | 138.3 / 96.7 / 123.1 / 77.3 / 109.3 | 138.4 / 97.3 / 121.8 / 76.4 / 109.4 |
+| **A4 (very few strokes)** | **107.8** | **98.9** |
+| union / unanimity / STAPLE | 124.3 / 79.1 / 108.8 | 124.8 / 79.2 / 108.2 |
+| **majority (≥ 4 of 6)** | **110.7** | **101.6** |
+| disputed share of the union | 66.1% | 66.1% |
+| biased pool: majority / STAPLE / real annotator | 84.0 / 83.3 / 138.3 | 83.2 / 82.9 / 138.4 |
+
+Everything matches within about 1%, except A4 and the majority vote. [Inference] A4 was trained on only
+922 painted pixels, so its ilastik classifier changes most between retrainings; with six annotators and a
+4-of-6 threshold, that one unstable annotator moves the majority by 9 nuclei per frame. **The sparsest
+annotator makes the consensus least stable**, which is worth knowing when real annotators label very
+different amounts.
+
 ### What this means for the consensus question
 
 - None of the annotators is an independent person. Session 3's differ only by sampling; Session 4's differ
